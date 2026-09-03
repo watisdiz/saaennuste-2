@@ -15,7 +15,7 @@
 - Viikko 2 sisältää vain HTML- ja CSS-muutoksia.
 - Ei JavaScriptiä, API-kutsuja, CSS-frameworkeja, WebGL:ää tai 3D-ratkaisuja.
 - Nykyinen Vantaa-esimerkkidata säilyy; älä lisää uutta feikkisäädataa.
-- Käytä nykyistä `assets/images/weather.jpg`-kuvaa; älä lisää uutta hero-kuvaa Viikko 2:ssa.
+- Käytä Week 2:n hyväksyttyä hero-kuvaa `assets/images/hero-partly-cloudy.png`; Week 1:n `assets/images/weather.jpg` säilytetään muuttamatta.
 - Design: Minimal Nordic + Soft Cyber, tumma blue-gray, vaalea teksti, yksi hillitty cyan-accent.
 - Toteutus suunnitellaan mobile-first ja sen on toimittava noin 360 px leveydestä ylöspäin ilman vaakasuuntaista sivuttaisvieritystä.
 - `viikko-1`-tagia ei saa muuttaa.

@@ -8,6 +8,14 @@ Ensimmäinen versio keskittyy semanttiseen HTML-rakenteeseen. CSS, JavaScript ja
 
 Viikko 1 sisältää staattisen etusivun (`index.html`), Tietoa-sivun (`about.html`) ja yhden paikallisen sääaiheisen kuvan.
 
+## Viikko 2
+
+Viikko 2 tuo projektiin ulkoisen `styles.css`-tyylitiedoston ja Minimal Nordic + Soft Cyber -visuaalisen tyylin. Toteutuksessa käytetään Box Modelia, Flexboxia ja CSS Gridiä sekä responsiivista `@media`-layoutia. Navigaatiossa on hover- ja focus-tilat, ja pinnoissa käytetään hillittyjä reunuksia, pyöristyksiä ja varjoja.
+
+JavaScript ja reaaliaikainen sää-API-data on edelleen siirretty myöhempiin viikkoihin.
+
+Viikon hero-kuvana käytetään projektia varten luotua AI-generoitua assetia `assets/images/hero-partly-cloudy.png`. Se ei ole valokuva Vantaasta.
+
 ### Kuvan lähde ja lisenssi
 
 Kuva `assets/images/weather.jpg`:

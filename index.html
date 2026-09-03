@@ -3,34 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
   <title>Sääennuste 2.0</title>
 </head>
 <body>
-  <header>
+  <header class="site-header">
     <h1>Sääennuste 2.0</h1>
-    <p>Selkeä sääpalvelu tulevia viikkotehtäviä varten.</p>
+    <nav class="site-nav" aria-label="Päänavigaatio">
+      <a class="is-active" href="index.html">Etusivu</a>
+      <a href="about.html">Tietoa</a>
+    </nav>
   </header>
 
-  <nav aria-label="Päänavigaatio">
-    <a href="index.html">Etusivu</a>
-    <a href="about.html">Tietoa</a>
-  </nav>
-
   <main>
-    <section>
-      <h2>Esimerkkisää Vantaalla</h2>
-      <p>Tämä on staattinen esimerkkidata, ei reaaliaikainen sääennuste.</p>
-      <p>Lämpötila: 15 °C</p>
-      <p>Säätila: Puolipilvistä</p>
-      <p>Tuuli: 4 m/s</p>
-      <p>Ilmankosteus: 70 %</p>
-      <figure>
-        <img src="assets/images/weather.jpg" alt="Valkoisia poutapilviä sinisellä taivaalla">
+    <section class="weather-hero" aria-labelledby="weather-title">
+      <div class="weather-summary">
+        <p class="location">VANTAA</p>
+        <p class="sample-badge"><span class="status-dot" aria-hidden="true"></span>ESIMERKKIDATA</p>
+        <h2 id="weather-title" class="temperature">15°</h2>
+        <p class="weather-status">Puolipilvistä</p>
+        <p class="weather-note">Tämä on staattinen esimerkkidata, ei reaaliaikainen sääennuste.</p>
+      </div>
+      <figure class="weather-figure">
+        <img src="assets/images/hero-partly-cloudy.png" alt="Puolipilvinen iltataivas rauhallisen meren yllä">
         <figcaption>Esimerkki sääaiheisesta kuvasta.</figcaption>
       </figure>
+      <div class="weather-metrics" aria-label="Nykyiset säämittaukset">
+        <div class="metric">
+          <svg class="metric-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+            <path d="M3 8c3.5 0 3.5-2 7-2s3.5 2 7 2 3.5-2 4-2M3 13c3.5 0 3.5-2 7-2s3.5 2 7 2 3.5-2 4-2M3 18c3.5 0 3.5-2 7-2s3.5 2 7 2" />
+          </svg>
+          <span class="metric-label">Tuuli</span>
+          <strong>4 m/s</strong>
+        </div>
+        <div class="metric">
+          <svg class="metric-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+            <path d="M12 3.5C9.5 7 6.5 10.2 6.5 14a5.5 5.5 0 0 0 11 0c0-3.8-3-7-5.5-10.5Z" />
+          </svg>
+          <span class="metric-label">Kosteus</span>
+          <strong>70 %</strong>
+        </div>
+        <div class="metric">
+          <svg class="metric-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+            <path d="M7.5 18.5h9a4 4 0 0 0 .7-7.9A5.5 5.5 0 0 0 6.7 9.2 3.7 3.7 0 0 0 7.5 18.5Z" />
+          </svg>
+          <span class="metric-label">Säätila</span>
+          <strong>Puolipilvistä</strong>
+        </div>
+      </div>
     </section>
 
-    <section>
+    <section class="upcoming-features">
       <h2>Tulevia ominaisuuksia</h2>
       <p>Palvelua kehitetään kurssin aikana vaiheittain. Suunniteltuja ominaisuuksia ovat:</p>
       <ul>
@@ -42,7 +65,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>Sääennuste 2.0 on VAMKin opintojakson kurssiprojekti.</p>
   </footer>
 </body>

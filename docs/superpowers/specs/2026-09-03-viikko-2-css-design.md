@@ -76,7 +76,7 @@ Hierarkia:
 5. nykyinen sääkuva tunnelmallisena hero-kuvana
 6. kolme nykyiseen dataan perustuvaa metriikkaa: Tuuli, Kosteus ja Säätila
 
-Hero-kuva toteutetaan edelleen oikeana paikallisena kuvana, jotta kuvan alt-teksti säilyy. CSS rajaa kuvan hallitusti `object-fit: cover` -ratkaisulla eikä HTML:n `width`-attribuutilla.
+Hero-kuva toteutetaan oikeana paikallisena kuvana `assets/images/hero-partly-cloudy.png`, jotta kuvan alt-teksti säilyy. CSS rajaa kuvan hallitusti `object-fit: cover` -ratkaisulla eikä HTML:n `width`-attribuutilla.
 
 Hero-kuvan päälle voidaan rakentaa tumma gradient-overlay CSS:llä, jotta teksti säilyy luettavana.
 

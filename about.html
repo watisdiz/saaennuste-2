@@ -3,33 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
   <title>Tietoa – Sääennuste 2.0</title>
 </head>
 <body>
-  <header>
+  <header class="site-header">
     <h1>Tietoa Sääennuste 2.0 -projektista</h1>
-    <p>Kurssiprojektin ensimmäinen HTML-versio.</p>
+    <nav class="site-nav" aria-label="Päänavigaatio">
+      <a href="index.html">Etusivu</a>
+      <a class="is-active" href="about.html">Tietoa</a>
+    </nav>
   </header>
 
-  <nav aria-label="Päänavigaatio">
-    <a href="index.html">Etusivu</a>
-    <a href="about.html">Tietoa</a>
-  </nav>
-
   <main>
-    <section>
+    <section class="content-surface">
       <h2>Mikä Sääennuste 2.0 on?</h2>
       <p>Sääennuste 2.0 on VAMKin Johdatus sovelluskehitykseen -opintojakson aikana kehitettävä web-sovellus.</p>
     </section>
 
-    <section>
+    <section class="content-surface">
       <h2>Projektin eteneminen</h2>
       <p>Projektia kehitetään vaiheittain viikko viikolta. Viikko 1 keskittyy HTML-rakenteeseen ja semanttisiin HTML5-elementteihin.</p>
       <p>CSS, JavaScript ja sää-API lisätään myöhemmissä viikkotehtävissä.</p>
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p><a href="index.html">Takaisin etusivulle</a></p>
   </footer>
 </body>
