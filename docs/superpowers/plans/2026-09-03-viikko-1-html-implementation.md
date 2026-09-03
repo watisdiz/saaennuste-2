@@ -4,7 +4,7 @@
 
 **Goal:** Toteuttaa Sääennuste 2.0 -projektin Viikko 1 -versio, joka täyttää kaikki DJ00BP24 Viikkotehtävä 1:n a–e-vaatimukset pelkällä semanttisella HTML:llä ja paikallisella kuvalla.
 
-**Architecture:** Sovellus on tässä vaiheessa täysin staattinen kaksisivuinen HTML-sivusto. `index.html` sisältää sääpalvelun etusivun ja staattisen esimerkkisään, `about.html` kuvaa projektia ja sen vaiheittaista kehitystä, ja paikallinen kuva sijaitsee `assets/images/`-hakemistossa. CSS:ää, JavaScriptiä, API-kutsuja tai toimivaa sääHakua ei lisätä Viikko 1:llä.
+**Architecture:** Sovellus on tässä vaiheessa täysin staattinen kaksisivuinen HTML-sivusto. `index.html` sisältää sääpalvelun etusivun ja staattisen esimerkkisään, `about.html` kuvaa projektia ja sen vaiheittaista kehitystä, ja paikallinen kuva sijaitsee `assets/images/`-hakemistossa. CSS:ää, JavaScriptiä, API-kutsuja tai toimivaa säähakua ei lisätä Viikko 1:llä.
 
 **Tech Stack:** HTML5, Git, GitHub. Ei CSS- tai JavaScript-toteutusta Viikko 1:llä.
 
@@ -207,7 +207,7 @@ Tarkista manuaalisesti:
 a) index.html + h1 + h2 + p + ulkoinen linkki
 b) paikallinen img + suhteellinen polku + kuvaava alt
 c) ul/ol + li
- d) header + nav + main + section + footer
+d) header + nav + main + section + footer
 e) about.html + AI/dokumentaation hyödyntäminen
 ```
 
@@ -278,7 +278,7 @@ GitHub repository:
 https://github.com/watisdiz/saaennuste-2
 
 Viikko 1 tag:
-https://github.com/watisdiz/saaennuste-2/releases/tag/viikko-1
+https://github.com/watisdiz/saaennuste-2/tree/viikko-1
 ```
 
-Jos GitHub näyttää annotatoidun tagin eri URL-rakenteella, käytä GitHubissa toimivaa tagilinkkiä. Sovelluksen live-URL voidaan lisätä myöhemmin, jos GitHub Pages otetaan käyttöön ennen varsinaista Viikko 5 -tehtävää.
+Sovelluksen live-URL voidaan lisätä myöhemmin, jos GitHub Pages otetaan käyttöön ennen varsinaista Viikko 5 -tehtävää.
