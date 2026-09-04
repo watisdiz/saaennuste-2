@@ -16,6 +16,10 @@ JavaScript ja reaaliaikainen sää-API-data on edelleen siirretty myöhempiin vi
 
 Viikon hero-kuvana käytetään projektia varten luotua AI-generoitua assetia `assets/images/hero-partly-cloudy.png`. Se ei ole valokuva Vantaasta.
 
+## Viikko 3
+
+Viikko 3 lisää etusivulle `script.js`-tiedoston ja paikallisen esimerkkisään vaihdon. Painike kierrättää demo-säätiloja ilman API-kutsua. Toteutuksessa on selkeä `if/else`-teemanvalinta, palauttava `getWeatherTheme(code)`-funktio, tuettujen teemojen array ja `forEach`-silmukka sekä oikea button ja click-event. Oikea säädata tulee vasta Viikolla 4.
+
 ### Kuvan lähde ja lisenssi
 
 Kuva `assets/images/weather.jpg`:

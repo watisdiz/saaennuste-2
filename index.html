@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
   <title>Sääennuste 2.0</title>
 </head>
 <body>
@@ -16,13 +17,16 @@
   </header>
 
   <main>
-    <section class="weather-hero" aria-labelledby="weather-title">
+    <section id="weatherHero" class="weather-hero theme-partly-cloudy" aria-labelledby="weather-title">
       <div class="weather-summary">
         <p class="location">VANTAA</p>
         <p class="sample-badge"><span class="status-dot" aria-hidden="true"></span>ESIMERKKIDATA</p>
         <h2 id="weather-title" class="temperature">15°</h2>
-        <p class="weather-status">Puolipilvistä</p>
+        <p id="weatherStatus" class="weather-status">Puolipilvistä</p>
         <p class="weather-note">Tämä on staattinen esimerkkidata, ei reaaliaikainen sääennuste.</p>
+        <button id="changeWeatherButton" class="weather-demo-button" type="button">
+          Vaihda esimerkkisäätä
+        </button>
       </div>
       <figure class="weather-figure">
         <img src="assets/images/hero-partly-cloudy.png" alt="Puolipilvinen iltataivas rauhallisen meren yllä">
@@ -48,7 +52,7 @@
             <path d="M7.5 18.5h9a4 4 0 0 0 .7-7.9A5.5 5.5 0 0 0 6.7 9.2 3.7 3.7 0 0 0 7.5 18.5Z" />
           </svg>
           <span class="metric-label">Säätila</span>
-          <strong>Puolipilvistä</strong>
+          <strong id="weatherMetricStatus">Puolipilvistä</strong>
         </div>
       </div>
     </section>
