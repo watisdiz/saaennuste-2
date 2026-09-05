@@ -17,20 +17,43 @@
   </header>
 
   <main>
-    <section id="weatherHero" class="weather-hero theme-partly-cloudy" aria-labelledby="weather-title">
+    <section id="weatherHero" class="weather-hero theme-partly-cloudy" aria-label="Nykyinen sää">
       <div class="weather-summary">
-        <p class="location">VANTAA</p>
-        <p class="sample-badge"><span class="status-dot" aria-hidden="true"></span>ESIMERKKIDATA</p>
-        <h2 id="weather-title" class="temperature">15°</h2>
-        <p id="weatherStatus" class="weather-status">Puolipilvistä</p>
-        <p class="weather-note">Tämä on staattinen esimerkkidata, ei reaaliaikainen sääennuste.</p>
-        <button id="changeWeatherButton" class="weather-demo-button" type="button">
-          Vaihda esimerkkisäätä
-        </button>
+        <p id="locationName" class="location">HELSINKI</p>
+        <p id="dataBadge" class="sample-badge">
+          <span class="status-dot" aria-hidden="true"></span><span id="dataBadgeText">AJANTASAINEN SÄÄ</span>
+        </p>
+        <h2 id="temperatureValue" class="temperature">--°</h2>
+        <p id="weatherStatus" class="weather-status">Haetaan säätietoja...</p>
+        <p class="weather-note">
+          Säädata: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+        </p>
+        <div class="weather-controls" aria-label="Sijainnin valinta">
+          <div class="city-control">
+            <label for="citySelect">Valitse kaupunki</label>
+            <select id="citySelect">
+              <option value="helsinki" selected>Helsinki</option>
+              <option value="vantaa">Vantaa</option>
+              <option value="tampere">Tampere</option>
+              <option value="turku">Turku</option>
+              <option value="oulu">Oulu</option>
+              <option value="rovaniemi">Rovaniemi</option>
+              <option value="kuopio">Kuopio</option>
+              <option value="jyvaskyla">Jyväskylä</option>
+              <option value="vaasa">Vaasa</option>
+              <option value="lappeenranta">Lappeenranta</option>
+            </select>
+          </div>
+          <button id="fetchCityButton" class="weather-action-button" type="button">Hae sää</button>
+          <button id="useLocationButton" class="weather-action-button weather-action-button-secondary" type="button">
+            Käytä nykyistä sijaintiani
+          </button>
+        </div>
+        <p id="weatherFeedback" class="weather-feedback" role="status" aria-live="polite">Haetaan Helsingin säätietoja...</p>
       </div>
       <figure class="weather-figure">
-        <img src="assets/images/hero-partly-cloudy.png" alt="Puolipilvinen iltataivas rauhallisen meren yllä">
-        <figcaption>Esimerkki sääaiheisesta kuvasta.</figcaption>
+        <img id="weatherImage" src="assets/images/hero-partly-cloudy.png" alt="Puolipilvinen sää">
+        <figcaption id="weatherFigureCaption">Puolipilvinen säämaisema.</figcaption>
       </figure>
       <div class="weather-metrics" aria-label="Nykyiset säämittaukset">
         <div class="metric">
@@ -38,21 +61,21 @@
             <path d="M3 8c3.5 0 3.5-2 7-2s3.5 2 7 2 3.5-2 4-2M3 13c3.5 0 3.5-2 7-2s3.5 2 7 2 3.5-2 4-2M3 18c3.5 0 3.5-2 7-2s3.5 2 7 2" />
           </svg>
           <span class="metric-label">Tuuli</span>
-          <strong>4 m/s</strong>
+          <strong id="windValue">-- m/s</strong>
         </div>
         <div class="metric">
           <svg class="metric-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
             <path d="M12 3.5C9.5 7 6.5 10.2 6.5 14a5.5 5.5 0 0 0 11 0c0-3.8-3-7-5.5-10.5Z" />
           </svg>
           <span class="metric-label">Kosteus</span>
-          <strong>70 %</strong>
+          <strong id="humidityValue">-- %</strong>
         </div>
         <div class="metric">
           <svg class="metric-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
             <path d="M7.5 18.5h9a4 4 0 0 0 .7-7.9A5.5 5.5 0 0 0 6.7 9.2 3.7 3.7 0 0 0 7.5 18.5Z" />
           </svg>
           <span class="metric-label">Säätila</span>
-          <strong id="weatherMetricStatus">Puolipilvistä</strong>
+          <strong id="weatherMetricStatus">Haetaan...</strong>
         </div>
       </div>
     </section>
@@ -61,11 +84,9 @@
       <h2>Tulevia ominaisuuksia</h2>
       <p>Palvelua kehitetään kurssin aikana vaiheittain. Suunniteltuja ominaisuuksia ovat:</p>
       <ul>
-        <li>Ajankohtainen sää</li>
         <li>Päivän ennuste</li>
         <li>Tulevien päivien ennuste</li>
       </ul>
-      <p>Myöhemmin säätiedot haetaan <a href="https://open-meteo.com/">Open-Meteo-palvelusta</a>.</p>
     </section>
   </main>
 
