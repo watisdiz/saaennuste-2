@@ -22,13 +22,13 @@ const cities = {
 };
 
 const heroImages = {
-  clear: "assets/images/hero-clear.png",
-  "partly-cloudy": "assets/images/hero-partly-cloudy.png",
-  cloudy: "assets/images/hero-cloudy.png",
-  rain: "assets/images/hero-rain.png",
-  thunder: "assets/images/hero-thunder.png",
-  snow: "assets/images/hero-snow.png",
-  fog: "assets/images/hero-fog.png"
+  clear: "assets/images/hero-clear.webp",
+  "partly-cloudy": "assets/images/hero-partly-cloudy.webp",
+  cloudy: "assets/images/hero-cloudy.webp",
+  rain: "assets/images/hero-rain.webp",
+  thunder: "assets/images/hero-thunder.webp",
+  snow: "assets/images/hero-snow.webp",
+  fog: "assets/images/hero-fog.webp"
 };
 
 function getWeatherTheme(code) {

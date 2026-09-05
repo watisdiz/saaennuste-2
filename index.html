@@ -6,6 +6,10 @@
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
   <title>Sääennuste 2.0</title>
+  <meta
+    name="description"
+    content="Sääennuste 2.0 näyttää ajantasaisen sään valitulle kaupungille tai nykyiselle sijainnille Open-Meteo-säädatan avulla."
+  >
 </head>
 <body>
   <header class="site-header">
@@ -28,7 +32,7 @@
         <p class="weather-note">
           Säädata: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
         </p>
-        <div class="weather-controls" aria-label="Sijainnin valinta">
+        <div class="weather-controls" role="group" aria-label="Sijainnin valinta">
           <div class="city-control">
             <label for="citySelect">Valitse kaupunki</label>
             <select id="citySelect">
@@ -52,10 +56,10 @@
         <p id="weatherFeedback" class="weather-feedback" role="status" aria-live="polite">Haetaan Helsingin säätietoja...</p>
       </div>
       <figure class="weather-figure">
-        <img id="weatherImage" src="assets/images/hero-partly-cloudy.png" alt="Puolipilvinen sää">
+        <img id="weatherImage" src="assets/images/hero-partly-cloudy.webp" alt="Puolipilvinen sää" fetchpriority="high">
         <figcaption id="weatherFigureCaption">Puolipilvinen säämaisema.</figcaption>
       </figure>
-      <div class="weather-metrics" aria-label="Nykyiset säämittaukset">
+      <div class="weather-metrics" role="group" aria-label="Nykyiset säämittaukset">
         <div class="metric">
           <svg class="metric-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
             <path d="M3 8c3.5 0 3.5-2 7-2s3.5 2 7 2 3.5-2 4-2M3 13c3.5 0 3.5-2 7-2s3.5 2 7 2 3.5-2 4-2M3 18c3.5 0 3.5-2 7-2s3.5 2 7 2" />
