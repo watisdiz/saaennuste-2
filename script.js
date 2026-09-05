@@ -8,15 +8,36 @@ const supportedThemes = [
   "fog"
 ];
 
-supportedThemes.forEach((theme) => {
-  console.log("Tuettu sääteema:", theme);
-});
+const cities = {
+  helsinki: { label: "HELSINKI", latitude: 60.1699, longitude: 24.9384 },
+  vantaa: { label: "VANTAA", latitude: 60.2934, longitude: 25.0378 },
+  tampere: { label: "TAMPERE", latitude: 61.4978, longitude: 23.7610 },
+  turku: { label: "TURKU", latitude: 60.4518, longitude: 22.2666 },
+  oulu: { label: "OULU", latitude: 65.0121, longitude: 25.4651 },
+  rovaniemi: { label: "ROVANIEMI", latitude: 66.5039, longitude: 25.7294 },
+  kuopio: { label: "KUOPIO", latitude: 62.8924, longitude: 27.6770 },
+  jyvaskyla: { label: "JYVÄSKYLÄ", latitude: 62.2426, longitude: 25.7473 },
+  vaasa: { label: "VAASA", latitude: 63.0951, longitude: 21.6165 },
+  lappeenranta: { label: "LAPPEENRANTA", latitude: 61.0587, longitude: 28.1887 }
+};
+
+const heroImages = {
+  clear: "assets/images/hero-clear.png",
+  "partly-cloudy": "assets/images/hero-partly-cloudy.png",
+  cloudy: "assets/images/hero-cloudy.png",
+  rain: "assets/images/hero-rain.png",
+  thunder: "assets/images/hero-thunder.png",
+  snow: "assets/images/hero-snow.png",
+  fog: "assets/images/hero-fog.png"
+};
 
 function getWeatherTheme(code) {
   if (code === 0) {
     return "clear";
-  } else if (code >= 1 && code <= 3) {
+  } else if (code >= 1 && code <= 2) {
     return "partly-cloudy";
+  } else if (code === 3) {
+    return "cloudy";
   } else if (code === 45 || code === 48) {
     return "fog";
   } else if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) {
@@ -25,42 +46,114 @@ function getWeatherTheme(code) {
     return "snow";
   } else if (code >= 95) {
     return "thunder";
-  } else {
-    return "cloudy";
+  }
+
+  return "cloudy";
+}
+
+function getWeatherLabel(code) {
+  if (code === 0) {
+    return "Selkeää";
+  } else if (code >= 1 && code <= 2) {
+    return "Puolipilvistä";
+  } else if (code === 3) {
+    return "Pilvistä";
+  } else if (code === 45 || code === 48) {
+    return "Sumua";
+  } else if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) {
+    return "Sadetta";
+  } else if ((code >= 71 && code <= 77) || (code >= 85 && code <= 86)) {
+    return "Lumisadetta";
+  } else if (code >= 95 && code <= 99) {
+    return "Ukkosta";
+  }
+
+  return "Pilvistä";
+}
+
+const hero = document.querySelector("#weatherHero");
+const locationName = document.querySelector("#locationName");
+const dataBadgeText = document.querySelector("#dataBadgeText");
+const temperatureValue = document.querySelector("#temperatureValue");
+const weatherStatus = document.querySelector("#weatherStatus");
+const windValue = document.querySelector("#windValue");
+const humidityValue = document.querySelector("#humidityValue");
+const weatherMetricStatus = document.querySelector("#weatherMetricStatus");
+const weatherImage = document.querySelector("#weatherImage");
+const weatherFigureCaption = document.querySelector("#weatherFigureCaption");
+const citySelect = document.querySelector("#citySelect");
+const fetchCityButton = document.querySelector("#fetchCityButton");
+const useLocationButton = document.querySelector("#useLocationButton");
+const weatherFeedback = document.querySelector("#weatherFeedback");
+
+function setLoading(isLoading, message = "") {
+  fetchCityButton.disabled = isLoading;
+  useLocationButton.disabled = isLoading;
+  citySelect.disabled = isLoading;
+  hero.classList.toggle("is-loading", isLoading);
+
+  if (message) {
+    showFeedback(message, "loading");
   }
 }
 
-const demoWeatherStates = [
-  { code: 2, label: "Puolipilvistä" },
-  { code: 0, label: "Selkeää" },
-  { code: 61, label: "Sadetta" },
-  { code: 71, label: "Lumisadetta" }
-];
+function showFeedback(message, type = "info") {
+  weatherFeedback.textContent = message;
+  weatherFeedback.dataset.state = type;
+}
 
-let currentDemoIndex = 0;
-const initialTheme = getWeatherTheme(demoWeatherStates[currentDemoIndex].code);
-console.log("Nykyinen sääteema:", initialTheme);
-
-function renderDemoWeather(state) {
-  const hero = document.querySelector("#weatherHero");
-  const status = document.querySelector("#weatherStatus");
-  const metricStatus = document.querySelector("#weatherMetricStatus");
-  const theme = getWeatherTheme(state.code);
+function renderWeather(data, locationLabel) {
+  const current = data.current;
+  const theme = getWeatherTheme(current.weather_code);
+  const label = getWeatherLabel(current.weather_code);
 
   supportedThemes.forEach((supportedTheme) => {
     hero.classList.remove(`theme-${supportedTheme}`);
   });
 
   hero.classList.add(`theme-${theme}`);
-  status.textContent = state.label;
-  metricStatus.textContent = state.label;
-
-  console.log("Valittu demo:", state.label, "Teema:", theme);
+  locationName.textContent = locationLabel;
+  dataBadgeText.textContent = "AJANTASAINEN SÄÄ";
+  temperatureValue.textContent = `${Math.round(current.temperature_2m)}°`;
+  weatherStatus.textContent = label;
+  windValue.textContent = `${current.wind_speed_10m.toFixed(1)} m/s`;
+  humidityValue.textContent = `${Math.round(current.relative_humidity_2m)} %`;
+  weatherMetricStatus.textContent = label;
+  weatherImage.src = heroImages[theme];
+  weatherImage.alt = `${label}, säämaisema`;
+  weatherFigureCaption.textContent = `${label}, sääteema.`;
 }
 
-const changeWeatherButton = document.querySelector("#changeWeatherButton");
+async function fetchWeather(latitude, longitude, locationLabel) {
+  const params = new URLSearchParams({
+    latitude,
+    longitude,
+    current: "temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m",
+    wind_speed_unit: "ms"
+  });
 
-changeWeatherButton.addEventListener("click", () => {
-  currentDemoIndex = (currentDemoIndex + 1) % demoWeatherStates.length;
-  renderDemoWeather(demoWeatherStates[currentDemoIndex]);
-});
+  setLoading(true, "Haetaan säätietoja...");
+
+  try {
+    const response = await fetch(`https://api.open-meteo.com/v1/forecast?${params}`);
+
+    if (!response.ok) {
+      throw new Error(`Open-Meteo vastasi HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log("Open-Meteo vastaus:", data);
+
+    if (!data.current) {
+      throw new Error("Open-Meteo-vastauksesta puuttuu current-data");
+    }
+
+    renderWeather(data, locationLabel);
+    showFeedback(`Säätiedot päivitetty: ${locationLabel}`, "success");
+  } catch (error) {
+    console.error("Säätietojen haku epäonnistui:", error);
+    showFeedback("Säätietojen hakeminen epäonnistui. Yritä uudelleen.", "error");
+  } finally {
+    setLoading(false);
+  }
+}
