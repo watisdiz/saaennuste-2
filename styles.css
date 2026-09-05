@@ -227,30 +227,87 @@ main {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
 }
 
-.weather-demo-button {
-  width: fit-content;
+.weather-controls {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 34rem;
+  margin-top: 1.25rem;
+}
+
+.city-control {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.city-control label {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.city-control select,
+.weather-action-button {
+  width: 100%;
   min-height: 2.75rem;
-  margin-top: 1.1rem;
-  padding: 0.65rem 0.9rem;
   border: 1px solid rgba(0, 240, 255, 0.45);
-  border-radius: 999px;
-  background: rgba(18, 24, 36, 0.5);
+  border-radius: 0.8rem;
+  background: rgba(18, 24, 36, 0.72);
   color: var(--text);
   font: inherit;
-  line-height: 1.2;
+}
+
+.city-control select {
+  padding: 0.6rem 0.75rem;
+}
+
+.weather-action-button {
+  padding: 0.65rem 0.9rem;
   cursor: pointer;
   transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
 }
 
-.weather-demo-button:hover {
+.weather-action-button:hover:not(:disabled) {
   border-color: var(--accent);
-  background: rgba(18, 24, 36, 0.72);
   color: var(--accent);
 }
 
-.weather-demo-button:focus-visible {
+.city-control select:focus-visible,
+.weather-action-button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
+}
+
+.weather-action-button:disabled,
+.city-control select:disabled {
+  cursor: wait;
+  opacity: 0.58;
+}
+
+.weather-feedback {
+  min-height: 1.5rem;
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.weather-feedback[data-state="loading"]::before {
+  content: "↻ ";
+}
+
+.weather-feedback[data-state="success"]::before {
+  content: "✓ ";
+}
+
+.weather-feedback[data-state="error"]::before {
+  content: "! ";
+}
+
+.weather-feedback[data-state="error"] {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.weather-hero.is-loading .weather-figure img {
+  opacity: 0.82;
 }
 
 .weather-figure {
@@ -431,6 +488,19 @@ main {
     justify-content: center;
   }
 
+  .weather-controls {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: end;
+  }
+
+  .weather-action-button {
+    width: auto;
+  }
+
+  .weather-controls .weather-action-button:last-child {
+    grid-column: 1 / -1;
+  }
+
   .weather-metrics {
     grid-column: 1 / -1;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -449,4 +519,14 @@ main {
     gap: 0;
   }
 
+}
+
+@media (min-width: 900px) {
+  .weather-controls {
+    grid-template-columns: minmax(12rem, 1.2fr) auto auto;
+  }
+
+  .weather-controls .weather-action-button:last-child {
+    grid-column: auto;
+  }
 }
