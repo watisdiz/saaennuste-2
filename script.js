@@ -124,6 +124,15 @@ function renderWeather(data, locationLabel) {
   weatherFigureCaption.textContent = `${label}, sääteema.`;
 }
 
+function hasValidCurrentWeather(current) {
+  return current && [
+    current.temperature_2m,
+    current.relative_humidity_2m,
+    current.weather_code,
+    current.wind_speed_10m
+  ].every(Number.isFinite);
+}
+
 async function fetchWeather(latitude, longitude, locationLabel) {
   const params = new URLSearchParams({
     latitude,
@@ -144,8 +153,8 @@ async function fetchWeather(latitude, longitude, locationLabel) {
     const data = await response.json();
     console.log("Open-Meteo vastaus:", data);
 
-    if (!data.current) {
-      throw new Error("Open-Meteo-vastauksesta puuttuu current-data");
+    if (!hasValidCurrentWeather(data.current)) {
+      throw new Error("Open-Meteo-vastauksen current-data on virheellinen");
     }
 
     renderWeather(data, locationLabel);
