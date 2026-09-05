@@ -190,7 +190,8 @@ function useCurrentLocation() {
     () => {
       setLoading(false);
       showFeedback("Sijaintia ei käytetty. Voit valita kaupungin listasta.", "error");
-    }
+    },
+    { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 }
   );
 }
 
