@@ -12,13 +12,21 @@ Viikko 1 sisältää staattisen etusivun (`index.html`), Tietoa-sivun (`about.ht
 
 Viikko 2 tuo projektiin ulkoisen `styles.css`-tyylitiedoston ja Minimal Nordic + Soft Cyber -visuaalisen tyylin. Toteutuksessa käytetään Box Modelia, Flexboxia ja CSS Gridiä sekä responsiivista `@media`-layoutia. Navigaatiossa on hover- ja focus-tilat, ja pinnoissa käytetään hillittyjä reunuksia, pyöristyksiä ja varjoja.
 
-JavaScript ja reaaliaikainen sää-API-data on edelleen siirretty myöhempiin viikkoihin.
+JavaScript ja reaaliaikainen sää-API-data oli siirretty myöhempiin viikkoihin; ajantasainen säädata toteutettiin Viikolla 4.
 
 Viikon hero-kuvana käytetään projektia varten luotua AI-generoitua assetia `assets/images/hero-partly-cloudy.png`. Se ei ole valokuva Vantaasta.
 
 ## Viikko 3
 
-Viikko 3 lisää etusivulle `script.js`-tiedoston ja paikallisen esimerkkisään vaihdon. Painike kierrättää demo-säätiloja ilman API-kutsua. Toteutuksessa on selkeä `if/else`-teemanvalinta, palauttava `getWeatherTheme(code)`-funktio, tuettujen teemojen array ja `forEach`-silmukka sekä oikea button ja click-event. Oikea säädata tulee vasta Viikolla 4.
+Viikko 3 lisää etusivulle `script.js`-tiedoston ja paikallisen esimerkkisään vaihdon. Painike kierrättää demo-säätiloja ilman API-kutsua. Toteutuksessa on selkeä `if/else`-teemanvalinta, palauttava `getWeatherTheme(code)`-funktio, tuettujen teemojen array ja `forEach`-silmukka sekä oikea button ja click-event. Viikko 4 korvasi tämän demon oikealla säädatalla.
+
+## Viikko 4
+
+Viikko 4 korvaa paikallisen esimerkkisään Open-Meteon ajantasaisella säädatalla. Sovellus hakee oletuksena Helsingin sään, ja käyttäjä voi valita kaupungin manuaalisesti tai antaa erillisellä painikkeella luvan selaimen nykyisen sijainnin käyttöön. Sijaintia ei pyydetä automaattisesti.
+
+API-vastauksesta käytetään lämpötilaa, suhteellista kosteutta, säätilakoodia ja tuulennopeutta. `weather_code` ohjaa seitsemää sääteemaa, joilla jokaisella on oma hero-kuva. Open-Meteo ei vaadi API-avainta.
+
+Säädata: [Open-Meteo](https://open-meteo.com/)
 
 ### Kuvan lähde ja lisenssi
 
