@@ -170,6 +170,8 @@ Sama kuva + CSS-filtteri ei korvaa teemakuvaa. API:n säätila vaihtaa aidosti h
 
 Nykyinen `getWeatherTheme(code)` säilytetään pääosin Viikko 3:n toteutuksesta. Open-Meteon WMO-koodit ryhmitellään seitsemään visuaaliseen teemaan.
 
+Pilvisyyskoodit erotellaan niin, että koodit `1`–`2` ovat `partly-cloudy` ja koodi `3` on `cloudy`. Näin WMO-koodin näkyvä säätila, hero-teema ja seitsemän hero-kuvan mapping pysyvät yhtenäisinä.
+
 Lisäksi tehdään helposti luettava funktio näkyvälle suomenkieliselle säätilalle, esimerkiksi `getWeatherLabel(code)`. Tekstin pitää perustua API:n `weather_code`-arvoon eikä kovakoodattuun demotilaan.
 
 Näkyvän säätilan ei tarvitse erotella jokaista WMO-koodia omaksi täysin eri termiksi, mutta sen pitää olla semanttisesti oikea, esimerkiksi:

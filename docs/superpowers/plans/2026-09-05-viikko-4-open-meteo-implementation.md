@@ -235,10 +235,10 @@ git commit -m "feat: add weather location controls"
 - Modify: `script.js`
 
 **Interfaces:**
-- Consumes: Task 2:n DOM-id:t ja olemassa oleva `getWeatherTheme(code)`.
+- Consumes: Task 2:n DOM-id:t ja olemassa oleva `getWeatherTheme(code)`, jossa Open-Meteon WMO-koodit `1`–`2` mapataan `partly-cloudy`-teemaan ja koodi `3` `cloudy`-teemaan.
 - Produces: `cities`, `heroImages`, `getWeatherLabel(code)`, `setLoading(isLoading, message)`, `showFeedback(message, type)`, `renderWeather(data, locationLabel)`, `fetchWeather(latitude, longitude, locationLabel)`.
 
-- [ ] **Step 1: Poista Viikko 3:n demostate ja click-handler**
+- [ ] **Step 1: Poista Viikko 3:n demostate ja click-handler sekä korjaa pilvisyksen WMO-teemamapping**
 
 Poista kokonaan:
 
@@ -252,6 +252,8 @@ changeWeatherButton.addEventListener(/* ... */);
 ```
 
 Säilytä `supportedThemes` ja `getWeatherTheme(code)`.
+
+Korjaa `getWeatherTheme(code)` niin, että `code >= 1 && code <= 2` palauttaa `"partly-cloudy"` ja `code === 3` palauttaa `"cloudy"`. Tämä varmistaa, että kaikki seitsemän hero-teemaa ovat saavutettavia validista Open-Meteo WMO-datasta.
 
 - [ ] **Step 2: Lisää kiinteät kaupunkikoordinaatit**
 
