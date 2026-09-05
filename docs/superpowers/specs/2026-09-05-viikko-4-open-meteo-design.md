@@ -77,7 +77,7 @@ Helsinki valittiin oletukseksi myös siksi, että geolocation-polun testaaminen 
 
 ## Manuaalinen kaupunkivalinta
 
-Sivulle lisätään `<select>` ja erillinen **Hae sää** -painike.
+Sivulle lisätään natiivi `<select>` kaupunkivalintaa varten.
 
 Valittavat kaupungit:
 
@@ -94,7 +94,7 @@ Valittavat kaupungit:
 
 Jokaiselle kaupungille määritellään sovelluksessa kiinteät WGS84-koordinaatit. Runtime-geocodingia ei käytetä.
 
-Käyttäjä valitsee kaupungin ja painaa **Hae sää**. Tämä tekee kurssin button + fetch -ketjusta suoraviivaisen arvioida.
+Käyttäjän vaihtaessa kaupungin selectistä sovellus hakee valitun kaupungin sään välittömästi yhteisellä fetch-polulla.
 
 ## Nykyinen sijainti
 
@@ -279,7 +279,7 @@ Viikko 4 on valmis reviewhun, kun:
 2. `fetch()` ja `console.log` näkyvät lähdekoodissa selvästi.
 3. API-data renderöityy HTML-elementteihin.
 4. Loading- ja error-palautteet toimivat.
-5. Kaupunkivalinta sisältää sovitut 10 kaupunkia ja **Hae sää** toimii.
+5. Kaupunkivalinta sisältää sovitut 10 kaupunkia ja kaupungin vaihtaminen hakee sään automaattisesti.
 6. **Käytä nykyistä sijaintiani** kysyy selaimen luvan vasta painalluksesta.
 7. Geolocation käyttää saatuja koordinaatteja suoraan Open-Meteossa ja näyttää otsikon **NYKYINEN SIJAINTI**.
 8. Sijaintiluvan kieltäminen ei estä manuaalista käyttöä.

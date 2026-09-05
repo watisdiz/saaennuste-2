@@ -489,16 +489,12 @@ main {
   }
 
   .weather-controls {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(12rem, 1.2fr) auto;
     align-items: end;
   }
 
   .weather-action-button {
     width: auto;
-  }
-
-  .weather-controls .weather-action-button:last-child {
-    grid-column: 1 / -1;
   }
 
   .weather-metrics {
@@ -519,14 +515,4 @@ main {
     gap: 0;
   }
 
-}
-
-@media (min-width: 900px) {
-  .weather-controls {
-    grid-template-columns: minmax(12rem, 1.2fr) auto auto;
-  }
-
-  .weather-controls .weather-action-button:last-child {
-    grid-column: auto;
-  }
 }

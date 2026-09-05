@@ -112,7 +112,7 @@ git commit -m "feat: add weather hero themes"
 
 **Interfaces:**
 - Consumes: nykyiset `#weatherHero`, `#weatherStatus`, `#weatherMetricStatus` DOM-hookit.
-- Produces: `#locationName`, `#dataBadge`, `#temperatureValue`, `#weatherStatus`, `#windValue`, `#humidityValue`, `#weatherMetricStatus`, `#weatherImage`, `#weatherFigureCaption`, `#citySelect`, `#fetchCityButton`, `#useLocationButton`, `#weatherFeedback`.
+- Produces: `#locationName`, `#dataBadge`, `#temperatureValue`, `#weatherStatus`, `#windValue`, `#humidityValue`, `#weatherMetricStatus`, `#weatherImage`, `#weatherFigureCaption`, `#citySelect`, `#useLocationButton`, `#weatherFeedback`.
 
 - [ ] **Step 1: Kirjaa nykyinen baseline ennen HTML-muutosta**
 
@@ -163,7 +163,6 @@ Lisää hero-summaryyn säätekstien jälkeen:
       <option value="lappeenranta">Lappeenranta</option>
     </select>
   </div>
-  <button id="fetchCityButton" class="weather-action-button" type="button">Hae sää</button>
   <button id="useLocationButton" class="weather-action-button weather-action-button-secondary" type="button">
     Käytä nykyistä sijaintiani
   </button>
@@ -207,7 +206,7 @@ Poista väite, että ajankohtainen sää tai Open-Meteo tulee vasta myöhemmin. 
 Run:
 
 ```bash
-git grep -n "locationName\|citySelect\|fetchCityButton\|useLocationButton\|weatherFeedback\|weatherImage\|windValue\|humidityValue" -- index.html
+git grep -n "locationName\|citySelect\|useLocationButton\|weatherFeedback\|weatherImage\|windValue\|humidityValue" -- index.html
 ```
 
 Expected: kaikki kahdeksan hookia löytyvät.
@@ -324,7 +323,6 @@ const weatherMetricStatus = document.querySelector("#weatherMetricStatus");
 const weatherImage = document.querySelector("#weatherImage");
 const weatherFigureCaption = document.querySelector("#weatherFigureCaption");
 const citySelect = document.querySelector("#citySelect");
-const fetchCityButton = document.querySelector("#fetchCityButton");
 const useLocationButton = document.querySelector("#useLocationButton");
 const weatherFeedback = document.querySelector("#weatherFeedback");
 ```
@@ -333,7 +331,6 @@ const weatherFeedback = document.querySelector("#weatherFeedback");
 
 ```javascript
 function setLoading(isLoading, message = "") {
-  fetchCityButton.disabled = isLoading;
   useLocationButton.disabled = isLoading;
   citySelect.disabled = isLoading;
   hero.classList.toggle("is-loading", isLoading);
@@ -485,7 +482,7 @@ function useCurrentLocation() {
 - [ ] **Step 3: Kytke event listenerit**
 
 ```javascript
-fetchCityButton.addEventListener("click", fetchSelectedCity);
+citySelect.addEventListener("change", fetchSelectedCity);
 useLocationButton.addEventListener("click", useCurrentLocation);
 ```
 
@@ -750,7 +747,7 @@ Expected selaimen reloadin jälkeen:
 
 - [ ] **Step 6: Testaa manuaalinen kaupunkivalinta**
 
-Valitse vähintään `Rovaniemi` ja paina **Hae sää**.
+Valitse vähintään `Rovaniemi`.
 
 Expected:
 - sijainti vaihtuu `ROVANIEMI`
@@ -778,7 +775,7 @@ Expected:
 - viesti `Sijaintia ei käytetty. Voit valita kaupungin listasta.`
 - viimeisin onnistunut sää jää näkyviin
 - kontrollit palautuvat aktiivisiksi
-- manuaalinen `Hae sää` toimii edelleen.
+- manuaalinen kaupunkivalinta toimii edelleen.
 
 - [ ] **Step 9: Testaa kaikki seitsemän hero-mappingia ilman API-sään odottamista**
 
@@ -812,7 +809,7 @@ Expected desktop:
 - [ ] **Step 11: Tee saavutettavuuden nopea smoke check**
 
 Keyboard-only:
-- Tab saavuttaa selectin, `Hae sää` -painikkeen, sijaintipainikkeen ja Open-Meteo-linkin
+- Tab saavuttaa selectin, sijaintipainikkeen ja Open-Meteo-linkin
 - focus-visible näkyy jokaisessa
 - statusviesti ilmoitetaan `role="status" aria-live="polite"` -alueella.
 

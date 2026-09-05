@@ -82,12 +82,10 @@ const weatherMetricStatus = document.querySelector("#weatherMetricStatus");
 const weatherImage = document.querySelector("#weatherImage");
 const weatherFigureCaption = document.querySelector("#weatherFigureCaption");
 const citySelect = document.querySelector("#citySelect");
-const fetchCityButton = document.querySelector("#fetchCityButton");
 const useLocationButton = document.querySelector("#useLocationButton");
 const weatherFeedback = document.querySelector("#weatherFeedback");
 
 function setLoading(isLoading, message = "") {
-  fetchCityButton.disabled = isLoading;
   useLocationButton.disabled = isLoading;
   citySelect.disabled = isLoading;
   hero.classList.toggle("is-loading", isLoading);
@@ -195,7 +193,7 @@ function useCurrentLocation() {
   );
 }
 
-fetchCityButton.addEventListener("click", fetchSelectedCityWeather);
+citySelect.addEventListener("change", fetchSelectedCityWeather);
 useLocationButton.addEventListener("click", useCurrentLocation);
 
 const defaultCity = cities.helsinki;
