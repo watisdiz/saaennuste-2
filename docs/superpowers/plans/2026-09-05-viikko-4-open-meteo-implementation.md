@@ -151,6 +151,7 @@ Lisää hero-summaryyn säätekstien jälkeen:
   <div class="city-control">
     <label for="citySelect">Valitse kaupunki</label>
     <select id="citySelect">
+      <option value="" disabled>Valitse kaupunki</option>
       <option value="helsinki" selected>Helsinki</option>
       <option value="vantaa">Vantaa</option>
       <option value="tampere">Tampere</option>
@@ -463,6 +464,7 @@ function useCurrentLocation() {
   navigator.geolocation.getCurrentPosition(
     (position) => {
       const { latitude, longitude } = position.coords;
+      citySelect.value = "";
       fetchWeather(latitude, longitude, "NYKYINEN SIJAINTI");
     },
     (error) => {

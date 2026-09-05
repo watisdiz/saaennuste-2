@@ -109,7 +109,8 @@ Jos käyttäjä hyväksyy luvan:
 1. selain palauttaa `latitude`- ja `longitude`-koordinaatit
 2. ne annetaan suoraan samalle Open-Meteo-hakufunktiolle
 3. sijaintiotsikko vaihtuu muotoon **NYKYINEN SIJAINTI**
-4. mitään lähimmän kaupungin laskentaa tai reverse geocodingia ei tehdä
+4. kaupunkiselect palautuu neutraaliin **Valitse kaupunki** -tilaan, jotta kaupungin voi valita uudelleen
+5. mitään lähimmän kaupungin laskentaa tai reverse geocodingia ei tehdä
 
 Jos käyttäjä kieltää luvan tai geolocation epäonnistuu:
 

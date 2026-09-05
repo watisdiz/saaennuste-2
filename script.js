@@ -184,7 +184,10 @@ function useCurrentLocation() {
 
   setLoading(true, "Haetaan sijaintia...");
   navigator.geolocation.getCurrentPosition(
-    ({ coords }) => fetchWeather(coords.latitude, coords.longitude, "NYKYINEN SIJAINTI"),
+    ({ coords }) => {
+      citySelect.value = "";
+      fetchWeather(coords.latitude, coords.longitude, "NYKYINEN SIJAINTI");
+    },
     () => {
       setLoading(false);
       showFeedback("Sijaintia ei käytetty. Voit valita kaupungin listasta.", "error");
