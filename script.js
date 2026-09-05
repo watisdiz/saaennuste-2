@@ -166,3 +166,36 @@ async function fetchWeather(latitude, longitude, locationLabel) {
     setLoading(false);
   }
 }
+
+function fetchSelectedCityWeather() {
+  const city = cities[citySelect.value];
+
+  if (!city) {
+    showFeedback("Valittua kaupunkia ei löytynyt. Valitse kaupunki listasta.", "error");
+    return;
+  }
+
+  fetchWeather(city.latitude, city.longitude, city.label);
+}
+
+function useCurrentLocation() {
+  if (!navigator.geolocation) {
+    showFeedback("Sijaintia ei voitu käyttää. Voit valita kaupungin listasta.", "error");
+    return;
+  }
+
+  setLoading(true, "Haetaan sijaintia...");
+  navigator.geolocation.getCurrentPosition(
+    ({ coords }) => fetchWeather(coords.latitude, coords.longitude, "NYKYINEN SIJAINTI"),
+    () => {
+      setLoading(false);
+      showFeedback("Sijaintia ei käytetty. Voit valita kaupungin listasta.", "error");
+    }
+  );
+}
+
+fetchCityButton.addEventListener("click", fetchSelectedCityWeather);
+useLocationButton.addEventListener("click", useCurrentLocation);
+
+const defaultCity = cities.helsinki;
+fetchWeather(defaultCity.latitude, defaultCity.longitude, defaultCity.label);
